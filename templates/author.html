@@ -1,0 +1,50 @@
+{% for book in books[0] %}
+
+<table width='100%'> <tr>
+    <td class='book_description' width='65%'>
+        <table><tr>
+            <td width='25%'>
+                Название
+            </td>
+            <td width='75%'>
+                {{book.title}}
+            </td></tr>
+            <tr>
+            <td width='25%'>
+                Автор
+            </td>
+            <td width='75%'>
+                {{book.author}}
+            </td></tr>
+            <tr>
+            <td width='25%'>
+                Год издания
+            </td>
+            <td width='75%'>
+                {{book.year}}
+            </td></tr>
+            <tr>
+            <td width='25%'>
+                Количество страниц
+            </td>
+            <td width='75%'>
+                {{book.num_pages}}
+            </td></tr>
+             <tr>
+            <td width='25%'>
+                Анотация
+            </td>
+            <td width='75%'>
+                {{book.anotation}}
+            </td></tr>
+
+        </table>
+    </td>
+    <td class='photo' width='35%'>
+        <a href="{{ url_for('book', id=book.id)}}">
+            <img src="{{url_for('static',filename=book.image_face)}}" />
+        </a>
+    </td>
+</tr> </table>
+
+{% endfor %}

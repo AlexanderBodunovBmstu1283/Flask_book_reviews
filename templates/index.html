@@ -1,0 +1,32 @@
+{% for review in reviews %}
+<hr>
+<div class="mediablog" >
+    <table ><tr>
+        <td width="100px" height="200px">
+            {% if review.type == "рецензия" %}
+                <img width="100px" height="200px" src="{{url_for('static',filename='expert.jpg')}}">
+            {% endif %}
+        </td>
+        <td>
+            <a href="{{ url_for('book', id=review.image_face.id)}}">
+            <img width="100px" height="200px" src="{{url_for('static',filename=review.image_face.image_face)}}">
+            </a>
+        </td>
+        <td>
+            <div>
+                <p>{{review.reviewer_name}}</p>
+                <p>{{review.review_title}}</p>
+            </div>
+            <div class="text_poem">
+						<section>
+						    {{review.text}}
+						</section>
+            </div>
+        </td>
+    </tr></table>
+</div>
+{% endfor %}
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="{{url_for('static',filename='readmore.js')}}"></script>
+<script src="{{url_for('static',filename='readmore_call.js')}}" charset="UTF-8"></script>

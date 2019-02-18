@@ -1,0 +1,19 @@
+<figure class="">
+<table>
+<tr>
+
+
+
+{% for photo in photos %}
+<td>
+<div class="slider_inner">
+    <a href="{{photo.name}}">
+        <img src="{{url_for('static',filename=photo.url)}}">
+    </a>
+</div>
+</td>
+
+{% endfor %}
+</tr>
+</table>
+</figure>

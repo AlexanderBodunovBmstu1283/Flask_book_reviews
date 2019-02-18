@@ -1,0 +1,118 @@
+
+
+
+<table width='100%'> <tr>
+    <td class='book_description' width='65%'>
+        <table><tr>
+            <td width='25%'>
+                Название
+            </td>
+            <td width='75%'>
+                {{book.title}}
+            </td></tr>
+            <tr>
+            <td width='25%'>
+                Автор
+            </td>
+            <td width='75%'>
+                {{book.author}}
+            </td></tr>
+            <tr>
+            <td width='25%'>
+                Год издания
+            </td>
+            <td width='75%'>
+                {{book.year}}
+            </td></tr>
+            <tr>
+            <td width='25%'>
+                Количество страниц
+            </td>
+            <td width='75%'>
+                {{book.num_pages}}
+            </td></tr>
+             <tr>
+            <td width='25%'>
+                Анотация
+            </td>
+            <td width='75%'>
+                {{book.anotation}}
+            </td></tr>
+
+        </table>
+    </td>
+    <td class='photo' width='35%'>
+        <img src="{{url_for('static',filename=book.image_face)}}" />
+    </td>
+</tr> </table>
+
+{% for review in book.reviews %}
+<hr>
+<div class="review">
+
+<table><tr>
+    <td width="0%">
+
+    </td>
+    <td width="100%">
+        <p>{{review.reviewer_name}}</p>
+        <p>{{review.review_title}}</p>
+        {{review.text}}
+    </td>
+</tr></table>
+</div>
+{% endfor %}
+
+{% for comment in book.comments %}
+
+<div class="review">
+
+<table><tr>
+    <td width="15%">
+
+    </td>
+    <td width="85%">
+        <hr>
+        <p>{{ comment.user_login }}</p>
+        <p>{{ comment.date }}</p>
+        {{comment.text}}
+    </td>
+</tr></table>
+</div>
+{% endfor %}
+
+
+<div class="new_comment">
+<h2>Добавить отзыв о книге</h2>
+    <p>Пожалуйста, ответьте на вопрос. Так система поймет, что вы человек, а не программа</p>
+<table><tr>
+    <td width="15%">
+
+    </td>
+    <td width="85%">
+        <form method="post">
+        <table>
+            <tr>
+                <td width="70%">
+                    <img src="{{url_for('static',filename=capture.photo)}}" />
+                </td>
+                <td width="30%">
+                    <p>Ответ:</p>
+                    <input type="number" name="user_answer">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <textarea name="text_comment"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="submit" value="Отправить отзыв">
+                </td>
+            </tr>
+        </table></form>
+    </td>
+</tr></table>
+
+</div>
